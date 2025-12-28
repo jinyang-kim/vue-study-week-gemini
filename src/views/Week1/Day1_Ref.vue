@@ -1,34 +1,34 @@
 <!-- 메인 컴포넌트 우리가 만드는 모든 화면은 이 파일 안에서 시작됨 -->
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive } from 'vue';
 
 // Ref
-const count = ref(0)
-const message = ref('Hello Vue!')
+const count = ref(0);
+const message = ref('Hello Vue!');
 
 const increaseCount = () => {
-  count.value++
-  console.log('현재 카운트:', count.value)
-}
+  count.value++;
+  console.log('현재 카운트:', count.value);
+};
 const decreaseCount = () => {
   if (count.value <= 0) {
-    alert('0보다 숫자를 내릴 수 없습니다')
-    return
+    alert('0보다 숫자를 내릴 수 없습니다');
+    return;
   }
-  count.value--
-  console.log('현재 카운트:', count.value)
-}
+  count.value--;
+  console.log('현재 카운트:', count.value);
+};
 
 // Reactive
 const state = reactive({
   title: 'Vue3 학습 중',
-  viewCount: 0,
-})
+  viewCount: 0
+});
 
 const addViewCount = () => {
-  state.viewCount++
-  console.log('현재 숫자:', state.viewCount)
-}
+  state.viewCount++;
+  console.log('현재 숫자:', state.viewCount);
+};
 </script>
 
 <template>

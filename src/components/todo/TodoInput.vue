@@ -1,6 +1,8 @@
 <script setup>
 import { useTodoStore } from '@/stores/todo';
 import { ref } from 'vue';
+// 디렉티브 import (이름 중요: vFocus -> v-focus)
+import { focus as vFocus } from '@/directives/focus';
 
 // 스토어 연결
 const store = useTodoStore();
@@ -25,6 +27,7 @@ const handleAdd = () => {
     <input
       type="text"
       v-model="todoInput"
+      v-focus
       placeholder="할 일을 입력하세요..."
       @keyup.enter="handleAdd"
     />

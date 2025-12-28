@@ -1,10 +1,14 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, defineAsyncComponent } from 'vue';
 import SkeletonLoader from '../common/SkeletonLoader.vue';
 import { storeToRefs } from 'pinia';
 import { useTodoStore } from '@/stores/todo';
 import { ref, computed } from 'vue';
-import AppModal from '@/components/common/AppModal.vue';
+// import AppModal from '@/components/common/AppModal.vue';
+
+const AppModal = defineAsyncComponent(
+  () => import('@/components/common/AppModal.vue')
+);
 
 // 스토어 연결
 const store = useTodoStore();
@@ -57,13 +61,18 @@ const filteredTodos = computed(() => {
   </div>
 
   <TransitionGroup v-else name="list" tag="ul" class="todo-list">
-    <li v-for="todo in filteredTodos" :key="todo.id" class="todo-item">
+    <li
+      v-for="todo in filteredTodos"
+      :key="todo.id"
+      class="todo-item"
+      v-memo="[todo.done, todo.text]"
+    >
       <input
         type="checkbox"
         :checked="todo.done"
         @change="toggleTodo(todo.id)"
       />
-      <span class="text">{{ todo.text }}</span>
+      <span class="text" :class="{ done: todo.done }">{{ todo.text }}</span>
       <button class="del-btn" @click="deleteTodo(todo.id)">삭제</button>
     </li>
   </TransitionGroup>

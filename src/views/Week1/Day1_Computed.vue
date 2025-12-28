@@ -1,22 +1,22 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from 'vue';
 
-const price = ref(5000)
-const count = ref(1)
+const price = ref(5000);
+const count = ref(1);
 
 const total = computed(() => {
-  return price.value * count.value
-})
+  return price.value * count.value;
+});
 const increment = () => {
-  count.value++
-}
+  count.value++;
+};
 const decrement = () => {
   if (count.value <= 1) {
-    alert('1보다 작은 수는 입력할 수 없습니다')
-    return
+    alert('1보다 작은 수는 입력할 수 없습니다');
+    return;
   }
-  count.value--
-}
+  count.value--;
+};
 </script>
 
 <template>

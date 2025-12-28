@@ -1,18 +1,18 @@
 <script setup>
-import { ref } from 'vue'
-import UserProfile from '@/components/UserProfile.vue'
+import { ref } from 'vue';
+import UserProfile from '@/components/UserProfile.vue';
 
-const message = ref('')
+const message = ref('');
 
 const handleAlert = (name) => {
-  message.value = `${name}님이 인사를 건넸습니다! 반가워요.`
-}
+  message.value = `${name}님이 인사를 건넸습니다! 반가워요.`;
+};
 
-const totalLikes = ref(0)
+const totalLikes = ref(0);
 
 const handleLike = () => {
-  totalLikes.value++
-}
+  totalLikes.value++;
+};
 </script>
 
 <template>

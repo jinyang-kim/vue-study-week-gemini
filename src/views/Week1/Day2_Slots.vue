@@ -1,5 +1,5 @@
 <script setup>
-import SlotCard from '@/components/SlotCard.vue'
+import SlotCard from '@/components/SlotCard.vue';
 </script>
 
 <template>

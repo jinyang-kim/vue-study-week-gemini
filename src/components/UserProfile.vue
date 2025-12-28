@@ -4,19 +4,19 @@
 const props = defineProps({
   userName: String,
   userJob: String,
-  age: Number,
-})
+  age: Number
+});
 
 // defineEmits: 부모에게 보낼 '신호(이벤트)의 이름'을 등록
-const emit = defineEmits(['alert-click', 'like'])
+const emit = defineEmits(['alert-click', 'like']);
 
 const sendAlert = () => {
   // emit('이벤트명', 전달한 데이터): 부모에게 이벤트를 발생시킵니다.
-  emit('alert-click', props.userName)
-}
+  emit('alert-click', props.userName);
+};
 const sendLike = () => {
-  emit('like')
-}
+  emit('like');
+};
 </script>
 
 <template>
