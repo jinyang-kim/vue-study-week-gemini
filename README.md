@@ -1,48 +1,85 @@
-# Vue.js 스터디 - 1주차
+# ✅ Vue 3 Todo App
 
-이 프로젝트는 Vue.js 3의 다양한 개념들을 배우고 연습하기 위해 만들어졌습니다. Vite라는 도구를 사용하여 개발되었으며, 웹 페이지의 반응성, 부품(컴포넌트), 화면 전환(라우팅), 그리고 데이터 관리(상태 관리)와 같은 주제들을 다루는 예제들을 포함하고 있습니다.
+Vue 3와 Composition API, Pinia를 사용하여 만든 **데이터 영구 저장 투두 리스트**입니다.  
+사용자 경험(UX)을 고려하여 애니메이션, 스켈레톤 UI, 모달 등을 구현했습니다.
 
-## 프로젝트 준비하기
+## 🚀 배포 링크 (Demo)
 
-이 프로젝트를 시작하기 위해 필요한 파일들을 설치합니다.
+👉 **[앱 보러가기](https://mobee-vue-study.vercel.app/)**
 
-```sh
+---
+
+## 🛠️ 기술 스택 (Tech Stack)
+
+- **Core:** Vue 3, Composition API (Script Setup)
+- **State Management:** Pinia
+- **Styling:** SCSS (Sass)
+- **Build Tool:** Vite
+- **Deploy:** Vercel
+
+---
+
+## ✨ 주요 기능 (Key Features)
+
+1.  **할 일 관리 (CRUD):** 할 일 추가, 수정(완료 체크), 삭제, 전체 삭제 기능
+2.  **데이터 영속성 (Persistence):** `LocalStorage`를 활용하여 새로고침 해도 데이터 유지
+3.  **고급 UX 패턴:**
+    - `<TransitionGroup>`을 활용한 리스트 애니메이션
+    - `Teleport`를 이용한 커스텀 모달(Modal) 창
+    - 데이터 로딩 시 `Skeleton UI` 적용
+    - `v-focus` 커스텀 디렉티브로 입력창 자동 포커싱
+4.  **최적화:** `v-memo`, `Lazy Loading`을 통한 성능 최적화
+
+---
+
+## 📂 프로젝트 구조 (Structure)
+
+```
+
+src/
+├── assets/          # CSS, Fonts, Images
+├── components/      # 컴포넌트 (Header, Input, List, Modal...)
+├── composables/     # 커스텀 훅 (useStorage)
+├── directives/      # 커스텀 디렉티브 (v-focus)
+├── stores/          # Pinia 스토어 (todo.js)
+└── views/           # 페이지 (TodoApp.vue)
+
+```
+
+---
+
+## 💿 실행 방법 (How to run)
+
+```bash
+# 1. 프로젝트 복제
+git clone [https://github.com/모비아이디/레포지토리명.git](https://github.com/모비아이디/레포지토리명.git)
+
+# 2. 패키지 설치
 npm install
-```
 
-## 사용 가능한 명령어
-
-### 개발 환경 실행하기
-이 명령어를 실행하면 개발 중인 웹 페이지를 실시간으로 볼 수 있는 서버가 시작됩니다. 코드를 변경하면 바로 웹 페이지에 반영됩니다.
-```sh
+# 3. 개발 서버 실행
 npm run dev
+
 ```
 
-### 웹 페이지 빌드하기 (배포용)
-웹 페이지를 사용자들에게 배포할 수 있는 형태로 만듭니다. 이 과정에서 파일 크기를 줄이고 성능을 최적화합니다.
-```sh
-npm run build
-```
+````
 
-### 빌드된 웹 페이지 미리보기
-`npm run build`로 만들어진 웹 페이지가 실제로 어떻게 작동하는지 미리 확인해볼 수 있습니다.
-```sh
-npm run preview
-```
+---
 
-### 코드 스타일 검사
-코드에서 발생할 수 있는 잠재적인 문제나 스타일 오류를 찾아내고 수정합니다.
-```sh
-npm run lint
-```
+### ✅ 4주 차 4일 미션: 대문 꾸미기
 
-### 코드 자동 정렬
-`src/` 폴더 안의 코드들을 일관된 형식으로 자동으로 정렬하여 읽기 쉽게 만듭니다.
-```sh
-npm run format
-```
+1.  **작성:** 위 템플릿을 복사해 `README.md`에 붙여넣으세요.
+2.  **수정:** `(여기에_모비님의_VERCEL_URL을_넣으세요)` 부분을 아까 만든 **실제 배포 주소**로 바꿔주세요.
+3.  **푸시:** 깃허브에 올립니다.
+    ```bash
+    git add README.md
+    git commit -m "docs: README 문서 작성"
+    git push
+    ```
+4.  **확인:** 깃허브 저장소 페이지에 들어가서, 하단에 문서가 예쁘게 나오는지 확인하세요.
 
-## 추천 개발 도구
+이제 누가 봐도 "아, 이 사람은 Vue 3와 Pinia를 제대로 쓸 줄 아는구나!"라고 알 수 있는 **완벽한 프로젝트**가 되었습니다.
 
-- [VS Code](https://code.visualstudio.com/) (코드를 편집하는 프로그램)
-- [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (VS Code에서 Vue.js 개발을 도와주는 확장 프로그램)
+작업을 마치고 **"학습 완료"**라고 말씀해 주세요.
+이제 대망의 **마지막 날(졸업 및 회고)**만 남겨두고 있습니다! 🎓
+````
