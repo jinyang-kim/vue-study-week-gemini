@@ -53,29 +53,45 @@ const filteredTodos = computed(() => {
     </div>
   </div>
 
-  <div class="todo-completed-hide" v-if="todos.length > 0">
-    <label>
-      <input type="checkbox" v-model="hideCompleted" />
-      <span>완료된 항목 숨기기</span>
-    </label>
+  <div v-if="!isLoading && todos.length === 0">할 일이 없습니다.</div>
+
+  <div v-if="!isLoading && todos.length > 0">
+    <div class="todo-completed-hide">
+      <label>
+        <input type="checkbox" v-model="hideCompleted" />
+        <span>완료된 항목 숨기기</span>
+      </label>
+    </div>
+
+    <TransitionGroup
+      v-if="todos.length > 0"
+      name="list"
+      tag="ul"
+      class="todo-list"
+    >
+      <li
+        v-for="todo in filteredTodos"
+        :key="todo.id"
+        class="todo-item"
+        v-memo="[todo.done, todo.text]"
+      >
+        <input
+          type="checkbox"
+          :checked="todo.done"
+          @change="toggleTodo(todo.id)"
+        />
+        <span class="text" :class="{ done: todo.done }">{{ todo.text }}</span>
+        <button class="del-btn" @click="deleteTodo(todo.id)">삭제</button>
+      </li>
+    </TransitionGroup>
+
+    <div class="todo-container">
+      <div class="footer">
+        <button class="clear-btn" @click="openModal">전체 삭제</button>
+      </div>
+    </div>
   </div>
 
-  <TransitionGroup v-else name="list" tag="ul" class="todo-list">
-    <li
-      v-for="todo in filteredTodos"
-      :key="todo.id"
-      class="todo-item"
-      v-memo="[todo.done, todo.text]"
-    >
-      <input
-        type="checkbox"
-        :checked="todo.done"
-        @change="toggleTodo(todo.id)"
-      />
-      <span class="text" :class="{ done: todo.done }">{{ todo.text }}</span>
-      <button class="del-btn" @click="deleteTodo(todo.id)">삭제</button>
-    </li>
-  </TransitionGroup>
   <!-- <ul class="todo-list">
     <li v-for="todo in filteredTodos" :key="todo.id" class="todo-item">
       <input
@@ -87,12 +103,6 @@ const filteredTodos = computed(() => {
       <button class="del-btn" @click="deleteTodo(todo.id)">삭제</button>
     </li>
   </ul> -->
-
-  <div class="todo-container">
-    <div class="footer" v-if="todos.length > 0">
-      <button class="clear-btn" @click="openModal">전체 삭제</button>
-    </div>
-  </div>
 
   <AppModal :isOpen="isModalOpen" @close="isModalOpen = false">
     <h3>주의</h3>
